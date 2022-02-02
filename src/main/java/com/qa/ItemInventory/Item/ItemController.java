@@ -11,10 +11,10 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "Items")
+@RequestMapping(path = "/Items")
 public class ItemController {
 
-    private final ItemService itemService;
+    private  ItemService itemService;
 
     @Autowired
     public ItemController(ItemService itemService) {
@@ -27,6 +27,14 @@ public class ItemController {
         return items;
     }
 
+    @RequestMapping(path = "/{id}", method = { RequestMethod.GET })
+    public ResponseEntity<Item> getUserById(@PathVariable("id") long id) {
+        Item savedItem = itemService.getById(id);
+
+        ResponseEntity<Item> response = ResponseEntity.status(HttpStatus.OK)
+                .body(savedItem);
+        return response;
+    }
 
     @PostMapping
     public ResponseEntity<Item> createItem(@Valid @RequestBody Item item) {
@@ -38,4 +46,15 @@ public class ItemController {
         ResponseEntity<Item> response = new ResponseEntity<Item>(savedItem, headers, HttpStatus.CREATED);
         return response;
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Item> updateItem(@PathVariable("id") long id, @Valid @RequestBody Item item) {
+        Item updatedItem = itemService.update(id, item);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", "/item/" + String.valueOf(updatedItem.getId()));
+
+        return new ResponseEntity<Item>(updatedItem, headers, HttpStatus.ACCEPTED);
+    }
+
 }
