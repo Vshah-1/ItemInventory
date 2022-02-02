@@ -2,10 +2,12 @@ package com.qa.ItemInventory.Item;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -20,7 +22,20 @@ public class ItemController {
     }
 
     @GetMapping
-    public List<Item> getItems() {
-        return itemService.getItems();
+    public ResponseEntity<List<Item>> getItems() {
+       ResponseEntity<List<Item>> items =  ResponseEntity.ok(itemService.getAll());
+        return items;
+    }
+
+
+    @PostMapping
+    public ResponseEntity<Item> createItem(@Valid @RequestBody Item item) {
+        Item savedItem = itemService.create(item);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", "/item/" + String.valueOf(savedItem.getId()));
+
+        ResponseEntity<Item> response = new ResponseEntity<Item>(savedItem, headers, HttpStatus.CREATED);
+        return response;
     }
 }
