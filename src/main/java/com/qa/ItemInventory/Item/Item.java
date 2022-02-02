@@ -1,41 +1,46 @@
 package com.qa.ItemInventory.Item;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table
 public class Item {
     @Id
-    @SequenceGenerator(
-            name = "item_sequence",
-            sequenceName = "item_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    @Length(min = 1, message = "Names cannot be empty")
     private String name;
+
+    @NotNull
+    @Length(min = 1, message = "Description cannot be empty")
     private String description;
 
 
     public Item() {
+        super();
     }
 
-    public Item(Long id,
+    public Item(String name,
+                String description) {
+        super();
+        this.name = name;
+        this.description = description;
+    }
+
+    public Item(long id,
                 String name,
                 String description) {
+        super();
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    public Item(String name,
-                String description) {
-        this.name = name;
-        this.description = description;
-    }
 
     public Long getId() {
         return id;

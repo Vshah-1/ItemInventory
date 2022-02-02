@@ -24,16 +24,28 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
-    public Item getById(Long id) {
-        if (itemRepository.existsById(id)) {
-            return itemRepository.findById(id).get();
-        }
-        throw new EntityNotFoundException("Item with this id " + id + " does not exist");
+    public Item getById(long id) {
+        return itemRepository.findById(id).orElseThrow(() -> {
+            return new EntityNotFoundException("Item with this id " + id + " does not exist");
+        });
     }
 
     public Item create(Item item) {
         Item savedItem = itemRepository.save(item);
         return savedItem;
+    }
+
+    public Item update(long id, Item item) {
+        if (itemRepository.existsById(id)) {
+            Item itemInDb = itemRepository.getById(id);
+
+            itemInDb.setName(item.getName());
+            itemInDb.setDescription(item.getDescription());
+
+            return itemRepository.save(itemInDb);
+        } else {
+            throw new EntityNotFoundException("Item with id " + " does not exist");
+        }
     }
 
 }
