@@ -16,6 +16,10 @@ public class ItemService {
         this.itemRepository = itemRepository;
     }
 
+    public List<Item> getAll() {
+        return itemRepository.findAll();
+    }
+
     public List<Item> getItems() {
         return itemRepository.findAll();
     }
@@ -27,6 +31,10 @@ public class ItemService {
         throw new EntityNotFoundException("Item with this id " + id + " does not exist");
     }
 
+    public Item create(Item item) {
+        Item savedItem = itemRepository.save(item);
+        return savedItem;
+    }
 
 }
 
