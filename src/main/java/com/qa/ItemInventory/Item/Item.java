@@ -1,27 +1,47 @@
 package com.qa.ItemInventory.Item;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Objects;
+
+@Entity
+@Table
 public class Item {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotNull
+    @Length(min = 1, message = "Names cannot be empty")
     private String name;
+
+    @NotNull
+    @Length(min = 1, message = "Description cannot be empty")
     private String description;
 
 
     public Item() {
+        super();
     }
 
-    public Item(Long id,
+    public Item(String name,
+                String description) {
+        super();
+        this.name = name;
+        this.description = description;
+    }
+
+    public Item(long id,
                 String name,
                 String description) {
+        super();
         this.id = id;
         this.name = name;
         this.description = description;
     }
 
-    public Item(String name,
-                String description) {
-        this.name = name;
-        this.description = description;
-    }
 
     public Long getId() {
         return id;
@@ -54,5 +74,22 @@ public class Item {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Item other = (Item) obj;
+        return Objects.equals(name, other.name) && Objects.equals(id, other.id) && Objects.equals(description, other.description);
     }
 }
