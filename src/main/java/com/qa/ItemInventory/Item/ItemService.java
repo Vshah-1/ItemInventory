@@ -28,8 +28,7 @@ public class ItemService {
     }
 
     public Item create(Item item) {
-//        Item savedItem = itemRepository.save(item);
-        return this.itemRepository.save(item);
+        return itemRepository.save(item);
     }
 
     public Item update(long id, Item item) {
