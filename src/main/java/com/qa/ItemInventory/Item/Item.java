@@ -4,6 +4,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
 
 @Entity
 @Table
@@ -73,5 +74,22 @@ public class Item {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, id);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Item other = (Item) obj;
+        return Objects.equals(name, other.name) && Objects.equals(id, other.id) && Objects.equals(description, other.description);
     }
 }
