@@ -3,6 +3,7 @@ package com.qa.ItemInventory.Item;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -18,6 +19,15 @@ public class ItemService {
     public List<Item> getItems() {
         return itemRepository.findAll();
     }
+
+    public Item getById(Long id) {
+        if (itemRepository.existsById(id)) {
+            return itemRepository.findById(id).get();
+        }
+        throw new EntityNotFoundException("Item with this id " + id + " does not exist");
+    }
+
+
 }
 
 
