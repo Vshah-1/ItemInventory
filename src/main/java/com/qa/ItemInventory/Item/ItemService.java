@@ -26,7 +26,7 @@ public class ItemService {
 
     public Item getById(long id) {
         return itemRepository.findById(id).orElseThrow(() -> {
-            return new EntityNotFoundException("Item with this id " + id + " does not exist");
+            return new EntityNotFoundException("Item with  id " + id + " does not exist");
         });
     }
 
@@ -44,16 +44,17 @@ public class ItemService {
 
             return itemRepository.save(itemInDb);
         } else {
-            throw new EntityNotFoundException("Item with id " + " does not exist");
+            throw new EntityNotFoundException("Item with id " + id + " does not exist");
         }
     }
 
+    public void delete(long id) {
+        if (itemRepository.existsById(id)) {
+            itemRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Item with id " + id + " does not exist");
+        }
+    }
 }
 
 
-//return List.of(
-//        new Item(
-//        1L,
-//        "Gilded Key",
-//        "Allows player to open locked chests")
-//        );

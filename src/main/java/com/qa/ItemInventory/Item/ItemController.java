@@ -57,4 +57,9 @@ public class ItemController {
         return new ResponseEntity<Item>(updatedItem, headers, HttpStatus.ACCEPTED);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteItem(@PathVariable("id") long id) {
+        itemService.delete(id);
+        return ResponseEntity.accepted().build();
+    }
 }
