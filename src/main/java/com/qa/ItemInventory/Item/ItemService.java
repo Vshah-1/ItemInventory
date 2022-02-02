@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ItemService {
@@ -20,39 +21,35 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
-    public List<Item> getItems() {
-        return itemRepository.findAll();
-    }
-
     public Item getById(long id) {
         return itemRepository.findById(id).orElseThrow(() -> {
-            return new EntityNotFoundException("Item with  id " + id + " does not exist");
-        });
+                return new EntityNotFoundException("Item with  id" + id + " does not exist");
+            });
     }
 
     public Item create(Item item) {
-        Item savedItem = itemRepository.save(item);
-        return savedItem;
+//        Item savedItem = itemRepository.save(item);
+        return this.itemRepository.save(item);
     }
 
     public Item update(long id, Item item) {
         if (itemRepository.existsById(id)) {
-            Item itemInDb = itemRepository.getById(id);
+            Item itemDb = itemRepository.getById(id);
 
-            itemInDb.setName(item.getName());
-            itemInDb.setDescription(item.getDescription());
+            itemDb.setName(item.getName());
+            itemDb.setDescription(item.getDescription());
 
-            return itemRepository.save(itemInDb);
+            return itemRepository.save(itemDb);
         } else {
-            throw new EntityNotFoundException("Item with id " + id + " does not exist");
+            throw new EntityNotFoundException("Item with id" + id + " does not exist");
         }
     }
 
-    public void delete(long id) {
+    public void deleteItem(long id) {
         if (itemRepository.existsById(id)) {
             itemRepository.deleteById(id);
         } else {
-            throw new EntityNotFoundException("Item with id " + id + " does not exist");
+            throw new EntityNotFoundException("Item with id" + id + " does not exist");
         }
     }
 }
