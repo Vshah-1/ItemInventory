@@ -48,7 +48,7 @@ public class ItemController {
         Item updatedItem = itemService.update(id, item);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", "/updateItem/" + String.valueOf(updatedItem.getId()));
+        headers.add("Location", "/ updateItem/" + String.valueOf(updatedItem.getId()));
 
         return new ResponseEntity<Item>(updatedItem, headers, HttpStatus.ACCEPTED);
     }
