@@ -88,7 +88,7 @@ public class ItemControllerWebIntegrationTest {
     // Test designed to test getByID function
     // Takes id of item variable created validItem
     @Test
-    public void getById() {
+    public void getByIdTest() {
         ResponseEntity<Item> expected = ResponseEntity.of(Optional.of(validItem));
         when(itemService.getById(1)).thenReturn(validItem);
 
@@ -96,6 +96,21 @@ public class ItemControllerWebIntegrationTest {
         assertEquals(expected, actual);
 
         verify(itemService, times(1)).getById(1);
+    }
+
+    // Test of deleteById function in itemService
+    // No Mock return as delete does not return results in the same manner
+    // Instead I verified that the deleteById method in itemService is being called
+    @Test
+    public void deleteByIdTest() {
+        ResponseEntity<Item> actual = controller.deleteById(1);
+
+        ResponseEntity<Item> expected = ResponseEntity.accepted().build();
+
+        assertEquals(expected, actual);
+
+        verify(itemService).deleteItem(1);
+
     }
 
 }
