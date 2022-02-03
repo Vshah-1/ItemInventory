@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
@@ -67,6 +69,19 @@ public class ItemControllerWebIntegrationTest {
 
         verify(itemService).create(itemCreate);
 
+    }
+
+    // Test designed to test getByID function
+    // Takes id of item variable created validItem
+    @Test
+    public void getById() {
+        ResponseEntity<Item> expected = ResponseEntity.of(Optional.of(validItem));
+        when(itemService.getById(1)).thenReturn(validItem);
+
+        ResponseEntity<Item> actual = controller.getById(1);
+        assertEquals(expected, actual);
+
+        verify(itemService, times(1)).getById(1);
     }
 
 }
