@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import java.util.ArrayList;
@@ -69,6 +70,19 @@ public class ItemControllerWebIntegrationTest {
 
         verify(itemService).create(itemCreate);
 
+    }
+
+    @Test
+    public void updateItemTest() {
+        Item updateItem = new Item(1, "key", "Opens lock");
+        Item updateWith = new Item("Key", "Opens Chests");
+        long itemId = updateItem.getId();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", "/updateItem/");
+
+        ResponseEntity<Item> expected = new ResponseEntity<Item>(updateItem, headers, HttpStatus.ACCEPTED);
+        when(itemService.update(itemId, updateItem)).thenReturn(updateItem);
     }
 
     // Test designed to test getByID function
