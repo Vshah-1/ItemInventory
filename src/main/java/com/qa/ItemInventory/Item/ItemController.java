@@ -22,7 +22,7 @@ public class ItemController {
     }
 
     @GetMapping("/getAllItems")
-    public ResponseEntity<List<Item>> getAll() {
+    public ResponseEntity<List<Item>> getItems() {
        ResponseEntity<List<Item>> allItems =  ResponseEntity.ok(itemService.getAll());
         return allItems;
     }
