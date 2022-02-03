@@ -38,7 +38,6 @@ public class ItemController {
 
     @PostMapping("/addItem")
     public ResponseEntity<Item> createItem(@Valid @RequestBody Item item) {
-//
         ResponseEntity<Item> items = ResponseEntity.status(HttpStatus.OK).body(itemService.create(item));
         return items;
     }
@@ -47,7 +46,11 @@ public class ItemController {
     @ResponseBody
     public ResponseEntity<Item> updateItem(@PathVariable("id") long id, @Valid @RequestBody Item item) {
         Item updatedItem = itemService.update(id, item);
-        return new ResponseEntity<Item>(updatedItem, HttpStatus.ACCEPTED);
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Location", "/updateItem/" + String.valueOf(updatedItem.getId()));
+
+        return new ResponseEntity<Item>(updatedItem, headers, HttpStatus.ACCEPTED);
     }
 
     @DeleteMapping("/deleteItem/{id}")
