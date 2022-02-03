@@ -75,6 +75,23 @@ public class ItemControllerSystemIntegrationTest {
 
     }
 
+    @Test
+    public void createItemTest() throws Exception {
+        Item itemSave = new Item("Bandages", "Heal up");
+        Item expectItem = new Item(nextNewItemId, itemSave.getName(), itemSave.getDescription());
+
+        MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request((HttpMethod.POST), "/Items/addItem");
+
+        mockRequest.contentType(MediaType.APPLICATION_JSON);
+        mockRequest.content(objectMapper.writeValueAsString(itemSave));
+        mockRequest.accept(MediaType.APPLICATION_JSON);
+
+        ResultMatcher outcomeMatcher = MockMvcResultMatchers.status().isCreated();
+        ResultMatcher contentMatcher = MockMvcResultMatchers.content().json(objectMapper.writeValueAsString(expectItem));
+
+        mockMvc.perform(mockRequest).andExpectAll(contentMatcher).andExpectAll(contentMatcher);
+
+    }
 
 
 }
