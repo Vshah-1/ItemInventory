@@ -1,4 +1,4 @@
-package com.qa.ItemInventory;
+package com.qa.ItemInventory.Controller;
 
 import com.qa.ItemInventory.Item.Item;
 import com.qa.ItemInventory.Item.ItemController;
