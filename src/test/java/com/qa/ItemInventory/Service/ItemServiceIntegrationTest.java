@@ -46,7 +46,7 @@ public class ItemServiceIntegrationTest {
     }
 
     @Test @Transactional
-    public void updateUserTest() {
+    public void updateItemTest() {
         Item itemDb = itemInDb.get(0);
 
         long id = itemDb.getId();
