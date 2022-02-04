@@ -46,6 +46,7 @@ public class ItemControllerWebIntegrationTest {
         validItem = new Item(1, "Key", "Opens chests");
     }
 
+
     @Test
     public void getAllItemsTest() {
         ResponseEntity<List<Item>> expected = new ResponseEntity<List<Item>>(items, HttpStatus.OK);
