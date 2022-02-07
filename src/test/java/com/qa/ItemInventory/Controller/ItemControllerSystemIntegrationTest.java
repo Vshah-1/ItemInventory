@@ -3,6 +3,7 @@ package com.qa.ItemInventory.Controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.ItemInventory.Item.Item;
 import com.qa.ItemInventory.Item.ItemRepository;
+import org.junit.Ignore;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -59,6 +60,7 @@ public class ItemControllerSystemIntegrationTest {
     public void teardown() {
         itemRepository.deleteAll();
     }
+
 
     @Test
     public void getItemsTest() throws Exception {
