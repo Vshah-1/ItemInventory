@@ -17,6 +17,10 @@ IDE that can run Java
 MySQL Database, that can persists data
 Spring API Development Platform
 
+(MySQL Schema) 
+![image](https://user-images.githubusercontent.com/94983341/152708779-8c9cd39e-29f3-45e6-96e6-76ab666551d4.png)
+
+
 Download the .jar build of the application. 
 
 What went well?
@@ -152,7 +156,7 @@ Here I will recieve all the items, including item with id 2 which i have just cr
 
 Here you can see the item that I have created has persisted into my databse
 
-![image](https://user-images.githubusercontent.com/94983341/152701707-4486e4a8-b6fa-4d46-a8cd-09a78f69d60a.png)
+![image](https://user-images.githubusercontent.com/94983341/152712767-a6ee0983-cdaf-4d92-a65c-4f294615d622.png)
 
 I can also update items within the database. I can update an Item using the put method in postman. 
 
@@ -160,7 +164,7 @@ I can also update items within the database. I can update an Item using the put 
 
 Here I have updated item with id 2, and as you can see it has also been updated in my database. 
 
-![image](https://user-images.githubusercontent.com/94983341/152701776-33d7c368-280b-497b-9e7b-57b5daba356c.png)
+![image](https://user-images.githubusercontent.com/94983341/152712889-7f94ad2b-4a39-41da-be2c-44fd572c5ec9.png)
 
 Finally I can also delete items contained with the database. Again we can do this via postman, and the delete method. 
 
@@ -203,7 +207,7 @@ Delete method:
 
 The test for this method is a little bit different. As when you delete an item, you cannot explicitly expect a value for the return, as what you would be receving is a null value as you have deleted that item. Therefore this test has to be written slightly different than the tests above. For this test we asserted that what we expect then is a status response that our request for delete has been accepted. That way we dont have to assert that we expect an explicit return, rather that the server accepted our request.
 
-![image](https://user-images.githubusercontent.com/94983341/152704942-a4680491-2f58-4053-be5f-6064eb12f119.png)
+![image](https://user-images.githubusercontent.com/94983341/152712998-443472ba-b10d-4c8c-917b-8bee4c45b4a4.png)
 
 
 This is the testing suite I designed for system integration of the controller class. As you can see it has a BeforeEach annotation where in I pass through dummy data before the tests for which to run the tests with. I also have an AfterEach tear down method, which resets the database after each tests, giving the tests a clean slate with which to run with.
