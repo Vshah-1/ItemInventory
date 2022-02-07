@@ -4,6 +4,7 @@ import com.qa.ItemInventory.data.entity.Item;
 import com.qa.ItemInventory.data.repository.ItemRepository;
 import com.qa.ItemInventory.service.ItemService;
 import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,7 +29,7 @@ public class ItemServiceUnitTest {
     private Item itemId;
     private Item itemWoId;
 
-    @Ignore
+    @Disabled
     @Test
     public void getItemIdTest() {
         long id = itemId.getId();
@@ -55,7 +56,7 @@ public class ItemServiceUnitTest {
 
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void deleteItemTest() {
         long id = itemId.getId();
@@ -66,7 +67,7 @@ public class ItemServiceUnitTest {
 
     }
 
-    @Ignore
+    @Disabled
     @Test
     public void updateItemTest() {
         long id = itemId.getId();
