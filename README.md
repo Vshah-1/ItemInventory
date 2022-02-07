@@ -1,11 +1,13 @@
 README file for Item Inventory project
-Why are we doing this?
+
+Why are we doing this?:
 
 
 We have been tasked with creating a fully functioning API that is CRUD functional, can handle HTTP requests, and can store data in a database. The scope of this project covers many key modules we covered in the DfE Software Pathway. Specifically, the project allows us to implement key modules we covered in Software Specialism such as Java, Spring boot, and also from Core learning such as Agile Fundamentals, Jira, Git, etc. 
 
 
 How i expected the challenge to go:
+
 This is an example of how you may give instructions on setting up your project locally. To get a local copy up and running follow these simple example steps.
 
 I was not very familiar and up to date with some of the modules we had covered earlier in the course, and even some of the recent ones admittedly. As a result, I expected the project to be very challenging, but also very engaging. 
@@ -13,17 +15,22 @@ I was not very familiar and up to date with some of the modules we had covered e
 How to run this project:
 
 Project prerequisites: 
-IDE that can run Java
-MySQL Database, that can persists data
-Spring API Development Platform
+
++ IDE that can run Java
+
++ MySQL Database, that can persists data
+
++ Spring API Development Platform
+
++ .Jar build of file 
 
 (MySQL Schema) 
 ![image](https://user-images.githubusercontent.com/94983341/152708779-8c9cd39e-29f3-45e6-96e6-76ab666551d4.png)
 
 
-Download the .jar build of the application. 
+To run this project, download a copy of my git repository, and clone it to your local computer. From there you can run the -jar command of the .jar file. After this you can run the application, and use the My SQL Schema above to persist the item to your SQL server. 
 
-What went well?
+What went well?:
 
 
 The project was very well defined, I felt clear in my understanding of what it was asking me to do. I found planning the project, especially through the use of the Jira board to be very helpful in prioritising my workload, and effectively leveraging the best use of my time.
@@ -31,7 +38,7 @@ The project was very well defined, I felt clear in my understanding of what it w
 As I became more familiar with git, I found the use of the feature branch model to feel quite natural, and I can see how effective it can be when working on a large project. I also found the quality of the teaching from the lecturers to be instrumental in ensuring we were adequately prepared for this project, and their support when we needed it. 
 
 
-What didn't go as planned? 
+What didn't go as planned?:
 
 
 I was unfamiliar with a few topics, such as Git, which then we were given a refresher on and support which was very helpful. I was also unfamiliar with the more technical parts of some topics such as how to best utilise the Jira Board interface, and how to create a proper risk matrix. 
@@ -39,7 +46,7 @@ I was unfamiliar with a few topics, such as Git, which then we were given a refr
 I also struggled with certain parts of Spring Boot Testing, and implementing a database, as I was not up to date with the learning for that module. These areas I had to catch my learning up first, and implement as I went along, which slowed down my progress. 
 
 
-Possible improvements for future revisions of the project 
+Possible improvements for future revisions of the project:
 
 
 I created an item inventory project, with the main goal of ultimately referencing item effects, from a database which holds commonly recurring items in a dungeon crawler type game. 
@@ -49,40 +56,40 @@ In the future, I would like to make it so that users have access to create their
 I would also like to expand on the details of the items, and create custom queries that could better search for items of a similar type, nature, effect, and so on. 
 
 
-Screenshots showing your postman requests and the output from the API:
+The following are the screenshots showing my postman requests and the output from the API:
 
-Get All Items 
+Get All Items--
 
-This is the code in my ItemController class, it utilises the getAll method in my ItemService class, and stores the reults in an array list, and can be used to get all the items currently held within the database. The path variable for this code is set too /items/getAllItems
+This is the code in my ItemController class, it utilises the getAll method in my ItemService class, and stores the reults in an array list, and can be used to get all the items currently held within the database. The path variable for this code is set too /items/getAllItems.
 
 ![image](https://user-images.githubusercontent.com/94983341/152696772-89d1b3a7-1cb3-4aa6-bfc2-997eb14eef55.png)
 
-The getAll method leverages the use of the findAll method, and finds all the items located within the repository
+The getAll method leverages the use of the findAll method, and finds all the items located within the repository.
 
 ![image](https://user-images.githubusercontent.com/94983341/152697144-16a45852-36e6-4487-9586-cf9cc2b8dd20.png)
 
-As you can see, the /items/getAllItems pathway can be used within postman to return all enteries within the repository 
+As you can see, the /items/getAllItems pathway can be used within postman to return all enteries within the repository.
 
 ![image](https://user-images.githubusercontent.com/94983341/152697273-58389cbf-3cf9-4396-abe7-896cfc4b1871.png)
 
 Get By ID-- 
 
-This is the code in my ItemController class for the Get By Id functionality, which allows for the ability to get items by their id value, which is unique to each item
+This is the code in my ItemController class for the Get By Id functionality, which allows for the ability to get items by their id value, which is unique to each item.
 
 ![image](https://user-images.githubusercontent.com/94983341/152698271-2aee9de0-0596-4f12-a81f-4c1a6d7edfe7.png)
 
-This code relies on the getByID method in my service class, which uses the the .findById method to search for items in the repository, and return items specific to the id given
+This code relies on the getByID method in my service class, which uses the the .findById method to search for items in the repository, and return items specific to the id given.
 
 ![image](https://user-images.githubusercontent.com/94983341/152698333-249f1bf2-9f27-4025-9173-f89fee0a43ab.png)
 
-The path variable to access items by their id is /Item/getItem/{id} where {id} is a value given, and will return the item with that id value as you can see from the following screenshot
+The path variable to access items by their id is /Item/getItem/{id} where {id} is a value given, and will return the item with that id value as you can see from the following screenshot.
 
 ![image](https://user-images.githubusercontent.com/94983341/152698403-f637ead4-99a4-4bd9-b69c-ed1c571c97e0.png)
 
 
 Add Item--
 
-This is the code in my item controller class, that allows for the functionality to add/create an item 
+This is the code in my item controller class, that allows for the functionality to add/create an item.
 
 ![image](https://user-images.githubusercontent.com/94983341/152698748-82d9e2b2-386a-46aa-a82c-8d7884da2134.png)
 
@@ -94,7 +101,7 @@ The path variable to add a new item is /Items/addItems, from here we can enter t
 
 ![image](https://user-images.githubusercontent.com/94983341/152698861-632d1ff5-3107-4d34-a8d3-b82261fccc68.png)
 
-Now when we call the get all items function, you can see the item we created has been added to the list of items
+Now when we call the get all items function, you can see the item we created has been added to the list of items.
 
 ![image](https://user-images.githubusercontent.com/94983341/152698895-a581274b-4511-4c93-b3d8-6838b92f7a4a.png)
 
@@ -123,11 +130,11 @@ Finally we have the ability to delete items. The functionality for this is provi
 
 ![image](https://user-images.githubusercontent.com/94983341/152699617-60c0f706-bafb-4334-ba90-8ae66a1a3015.png)
 
-The method within our service class firsts checks to see if an item exists, with the id of the value we have given it. If an item with that id exists, we use the .deleteById method and delete that item from the repository. If an item with that id does not exist, we can throw an EntityNotFoundException
+The method within our service class firsts checks to see if an item exists, with the id of the value we have given it. If an item with that id exists, we use the .deleteById method and delete that item from the repository. If an item with that id does not exist, we can throw an EntityNotFoundException.
 
 ![image](https://user-images.githubusercontent.com/94983341/152699709-69f93a06-e2c1-4cca-90d0-c3cdbdbae68f.png)
 
-We can send a delete request by following the path specified above /Items/deleteItem/{id}, and here was have passed the value 3 
+We can send a delete request by following the path specified above /Items/deleteItem/{id}, and here was have passed the value 3.
 
 ![image](https://user-images.githubusercontent.com/94983341/152699751-4ea9b874-0b73-45f6-900c-2102db39b919.png)
 
@@ -150,11 +157,11 @@ When using the create Item functionality, I can send a create item request via p
 
 ![image](https://user-images.githubusercontent.com/94983341/152701677-792c81b1-1842-4ba8-b0e2-59212e73cf49.png)
 
-Here I will recieve all the items, including item with id 2 which i have just created
+Here I will recieve all the items, including item with id 2 which i have just created.
 
 ![image](https://user-images.githubusercontent.com/94983341/152701693-97ebfd17-e283-44e2-b488-ed3e4e9b8769.png)
 
-Here you can see the item that I have created has persisted into my databse
+Here you can see the item that I have created has persisted into my databse.
 
 ![image](https://user-images.githubusercontent.com/94983341/152712767-a6ee0983-cdaf-4d92-a65c-4f294615d622.png)
 
@@ -180,7 +187,7 @@ This is the testing suite I designed for Unit Testing off the controller class. 
 
 ![image](https://user-images.githubusercontent.com/94983341/152704002-01c63fea-46c7-492d-b3c5-4f7cb1f60b3e.png)
 
-Here you can see I have tests designed for the get all items method, create items method, and update items method
+Here you can see I have tests designed for the get all items method, create items method, and update items method.
 
 Get all: 
 
@@ -188,7 +195,7 @@ The test for this method asserts that when the service method .getAll is called,
 
 Create item:
 
-The test for this method assers that when a new item is created using the service method .create, verify that that item that has been created is returned 
+The test for this method assers that when a new item is created using the service method .create, verify that that item that has been created is returned.
 
 Update item:
 
@@ -218,21 +225,19 @@ In this class I only managed to cover two tests. The Get Items, and create Items
 
 ![image](https://user-images.githubusercontent.com/94983341/152706090-f00a1aa5-e683-4010-b753-36855b058b09.png)
 
+The following are the results from running all my tests. As you can see there are three that have been ignored. There were tests that I had not completed, and will come back to in a later version. 
 
 
-(Test results) 
-![image](https://user-images.githubusercontent.com/94983341/152708027-f2759563-f12c-4b6f-b7fb-bd3cb47d4632.png)
+![image](https://user-images.githubusercontent.com/94983341/152715439-52e1883a-39c1-48ac-a1e3-4dc3004d3b0b.png)
 
-Test Coverage (1 - 72%)
+
+The coverage report shows that I have achieved a test coverage of around 72%.
+
 ![image](https://user-images.githubusercontent.com/94983341/152708067-d0020d55-6013-4ffb-a0c5-d6e55bad4b75.png)
 
+Further breakdown of the test coverage. 
 
-
-
-Test coverage (2)
 ![image](https://user-images.githubusercontent.com/94983341/152708046-daa56ebf-aaf1-4710-8241-82375ecfa8b2.png)
-
-
 
 
 
