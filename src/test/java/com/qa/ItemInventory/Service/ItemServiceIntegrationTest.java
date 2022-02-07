@@ -1,10 +1,9 @@
 package com.qa.ItemInventory.Service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import com.qa.ItemInventory.Item.Item;
-import com.qa.ItemInventory.Item.ItemRepository;
-import com.qa.ItemInventory.Item.ItemService;
-import net.bytebuddy.pool.TypePool;
+import com.qa.ItemInventory.data.entity.Item;
+import com.qa.ItemInventory.data.repository.ItemRepository;
+import com.qa.ItemInventory.service.ItemService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

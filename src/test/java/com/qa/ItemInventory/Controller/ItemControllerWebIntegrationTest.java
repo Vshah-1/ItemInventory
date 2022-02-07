@@ -1,14 +1,12 @@
 package com.qa.ItemInventory.Controller;
 
-import com.qa.ItemInventory.Item.Item;
-import com.qa.ItemInventory.Item.ItemController;
-import com.qa.ItemInventory.Item.ItemService;
-import org.junit.jupiter.api.AfterEach;
+import com.qa.ItemInventory.data.entity.Item;
+import com.qa.ItemInventory.controller.ItemController;
+import com.qa.ItemInventory.service.ItemService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

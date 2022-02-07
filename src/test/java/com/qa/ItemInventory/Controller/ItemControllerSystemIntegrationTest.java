@@ -1,9 +1,8 @@
 package com.qa.ItemInventory.Controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qa.ItemInventory.Item.Item;
-import com.qa.ItemInventory.Item.ItemRepository;
-import org.junit.Ignore;
+import com.qa.ItemInventory.data.entity.Item;
+import com.qa.ItemInventory.data.repository.ItemRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

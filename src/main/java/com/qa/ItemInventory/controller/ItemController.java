@@ -1,6 +1,8 @@
-package com.qa.ItemInventory.Item;
+package com.qa.ItemInventory.controller;
 
 
+import com.qa.ItemInventory.data.entity.Item;
+import com.qa.ItemInventory.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,7 +16,7 @@ import java.util.List;
 @RequestMapping(path = "/Items")
 public class ItemController {
 
-    private  ItemService itemService;
+    private ItemService itemService;
 
     @Autowired
     public ItemController(ItemService itemService) {

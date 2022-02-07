@@ -1,8 +1,8 @@
 package com.qa.ItemInventory.Service;
 
-import com.qa.ItemInventory.Item.Item;
-import com.qa.ItemInventory.Item.ItemRepository;
-import com.qa.ItemInventory.Item.ItemService;
+import com.qa.ItemInventory.data.entity.Item;
+import com.qa.ItemInventory.data.repository.ItemRepository;
+import com.qa.ItemInventory.service.ItemService;
 import org.junit.Ignore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
