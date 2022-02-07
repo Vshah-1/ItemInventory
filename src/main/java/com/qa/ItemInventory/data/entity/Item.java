@@ -1,4 +1,4 @@
-package com.qa.ItemInventory.Item;
+package com.qa.ItemInventory.data.entity;
 
 import org.hibernate.validator.constraints.Length;
 

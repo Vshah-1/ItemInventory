@@ -1,11 +1,12 @@
-package com.qa.ItemInventory.Item;
+package com.qa.ItemInventory.service;
 
+import com.qa.ItemInventory.data.entity.Item;
+import com.qa.ItemInventory.data.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.function.Supplier;
+
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ItemService {
