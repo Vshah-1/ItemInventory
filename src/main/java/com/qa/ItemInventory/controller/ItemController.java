@@ -1,6 +1,8 @@
-package com.qa.ItemInventory.Item;
+package com.qa.ItemInventory.controller;
 
 
+import com.qa.ItemInventory.data.entity.Item;
+import com.qa.ItemInventory.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -14,52 +16,48 @@ import java.util.List;
 @RequestMapping(path = "/Items")
 public class ItemController {
 
-    private  ItemService itemService;
+    private ItemService itemService;
 
     @Autowired
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
     }
 
-    @GetMapping
+    @GetMapping("/getAllItems")
     public ResponseEntity<List<Item>> getItems() {
-       ResponseEntity<List<Item>> items =  ResponseEntity.ok(itemService.getAll());
+       ResponseEntity<List<Item>> allItems =  ResponseEntity.ok(itemService.getAll());
+        return allItems;
+    }
+
+    @GetMapping("/getItem/{id}")
+    public ResponseEntity<Item> getById(@PathVariable("id") long id) {
+        Item savedItem = itemService.getById(id);
+
+        ResponseEntity<Item> item = ResponseEntity.status(HttpStatus.OK)
+                .body(savedItem);
+        return item;
+    }
+
+    @PostMapping("/addItem")
+    public ResponseEntity<Item> createItem(@Valid @RequestBody Item item) {
+        ResponseEntity<Item> items = ResponseEntity.status(HttpStatus.OK).body(itemService.create(item));
         return items;
     }
 
-    @RequestMapping(path = "/{id}", method = { RequestMethod.GET })
-    public ResponseEntity<Item> getUserById(@PathVariable("id") long id) {
-        Item savedItem = itemService.getById(id);
-
-        ResponseEntity<Item> response = ResponseEntity.status(HttpStatus.OK)
-                .body(savedItem);
-        return response;
-    }
-
-    @PostMapping
-    public ResponseEntity<Item> createItem(@Valid @RequestBody Item item) {
-        Item savedItem = itemService.create(item);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", "/item/" + String.valueOf(savedItem.getId()));
-
-        ResponseEntity<Item> response = new ResponseEntity<Item>(savedItem, headers, HttpStatus.CREATED);
-        return response;
-    }
-
-    @PutMapping("/{id}")
+    @PutMapping("/updateItem/{id}")
+    @ResponseBody
     public ResponseEntity<Item> updateItem(@PathVariable("id") long id, @Valid @RequestBody Item item) {
         Item updatedItem = itemService.update(id, item);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", "/item/" + String.valueOf(updatedItem.getId()));
+        headers.add("Location", "/updateItem/" + String.valueOf(updatedItem.getId()));
 
         return new ResponseEntity<Item>(updatedItem, headers, HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteItem(@PathVariable("id") long id) {
-        itemService.delete(id);
+    @DeleteMapping("/deleteItem/{id}")
+    public ResponseEntity<Item> deleteById(@PathVariable("id") long id) {
+        itemService.deleteItem(id);
         return ResponseEntity.accepted().build();
     }
 }

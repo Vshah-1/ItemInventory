@@ -1,4 +1,4 @@
-package com.qa.ItemInventory.Item;
+package com.qa.ItemInventory.data.entity;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
-@Table
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
