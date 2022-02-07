@@ -1,0 +1,23 @@
+--DROP TABLE IF EXISTS `ItemInventory`;
+--
+--CREATE TABLE `ItemInventory` (
+--	`id` LONG AUTO_INCREMENT,
+--    `name` VARCHAR(255) NOT NULL,
+--    `description` VARCHAR(255) NOT NULL,
+--    PRIMARY KEY(`id`),
+--    -- <> is not equal to
+--    CHECK(`name` <> ''),
+--    CHECK(`description` <> ''),
+--);
+--
+--
+--
+----USE itemschema;
+----CREATE TABLE IF NOT EXISTS ItemInventory (
+----id LONG AUTO_INCREMENT,
+----name VARCHAR(255) NOT NULL,
+----description VARCHAR(255) NOT NULL,
+----PRIMARY KEY(id),
+----	CHECK(name <> ''),
+----	CHECK(description <> ''),
+----);
